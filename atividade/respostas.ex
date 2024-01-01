@@ -43,6 +43,40 @@ defmodule Atividade do
   end
 
   #Questão 05
-  
+   defmodule CalculadoraIMC do
+    def calcular_imc(nome, peso_kg, altura_cm) do
+      altura_m = altura_cm / 100.0
+      imc = peso_kg / (altura_m * altura_m)
+
+      "Olá #{nome}, seu IMC é de #{imc}."
+    end
+  end
+
+    IO.puts "Digite seu nome:"
+    nome = String.trim(IO.gets(""))
+
+    IO.puts "Digite seu peso em Kg:"
+    peso_kg = String.to_float(String.trim(IO.gets(""))) || 0.0
+
+    IO.puts "Digite sua altura em centímetros:"
+    altura_cm = String.to_float(String.trim(IO.gets(""))) || 0.0
+
+    mensagem_imc = CalculadoraIMC.calcular_imc(nome, peso_kg, altura_cm)
+    IO.puts mensagem_imc
+
+  #Questão 06
+  defmodule SequenciaInversa do
+    def ler_e_exibir_inverso(n) do
+      IO.puts "Digite uma sequência de #{n} números inteiros:"
+      numeros = Enum.reverse(Enum.map(1..n, fn _ -> String.to_integer(IO.gets("") |> String.trim()) end))
+
+      IO.puts "Sequência na ordem inversa: #{numeros}"
+    end
+  end
+
+    IO.puts "Digite a quantidade de números na sequência:"
+    quantidade_numeros = String.to_integer(String.trim(IO.gets(""))) || 0
+
+    SequenciaInversa.ler_e_exibir_inverso(quantidade_numeros)
 
 end
